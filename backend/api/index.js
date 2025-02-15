@@ -9,7 +9,14 @@ import connectDB from "../config/db.js";
 dotenv.config();
 
 const app = express();
-app.use(cors());
+
+const corsOptions = {
+  origin: "*",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -18,7 +25,7 @@ app.use("/appoint", appointRoute);
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, async() => {
+app.listen(PORT, async () => {
   try {
     await connectDB();
     console.log(`Server is running on port ${PORT}`);
