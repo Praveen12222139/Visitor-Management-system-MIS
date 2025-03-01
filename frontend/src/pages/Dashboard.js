@@ -16,7 +16,7 @@ const Dashboard = () => {
         const token = localStorage.getItem("token");
         const hostEmail = localStorage.getItem("hostEmail");
         if (!hostEmail) return;
-        const response = await axios.get(`http://localhost:8000/appoint/find/${hostEmail}`, {
+        const response = await axios.get(`https://visitormaback.vercel.app/appoint/find/${hostEmail}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -47,7 +47,7 @@ const Dashboard = () => {
   const handleAction = async (visitorId, action) => {
     try {
       await axios.post(
-        `http://localhost:8000/appoint/approve/${visitorId}`,
+        `https://visitormaback.vercel.app/appoint/approve/${visitorId}`,
         {},
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
