@@ -19,7 +19,7 @@ const Register = () => {
     }
 
     try {
-      await API.post("/api/auth/register", {
+      await API.post("/auth/register", {
         fullName,
         email,
         password,
